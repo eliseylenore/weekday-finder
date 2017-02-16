@@ -32,5 +32,18 @@ namespace WeekdayFinderApp
             //assert
             Assert.Equal(result, referenceDay);
         }
+
+        // Test to see what day it is in one week from referenceDay
+        [Fact]
+        public void GetDayOneWeekAfterReferenceDate_ReturnDayOneWeekAfterReferenceDate_String()
+        {
+            //arrange
+            string referenceDay = "Thursday";
+            WeekdayFinder newWeekdayFinder = new WeekdayFinder();
+            //act
+            string result = newWeekdayFinder.GetDayOneWeekAfterReferenceDate();
+            //assert
+            Assert.Equal(result, referenceDay);
+        }
     }
 }
