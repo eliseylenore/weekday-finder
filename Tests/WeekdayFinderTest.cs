@@ -12,7 +12,7 @@ namespace WeekdayFinderApp
         public void GetReferenceDay_ReturnReferenceDay_String()
         {
             //arrange
-            string referenceDay = "Thursday";
+            string referenceDay = "Sunday";
             WeekdayFinder newWeekdayFinder = new WeekdayFinder();
             // act
             string result = newWeekdayFinder.GetReferenceDay();
@@ -25,7 +25,7 @@ namespace WeekdayFinderApp
         public void GetDayAfterReferenceDate_ReturnDayAfterReferenceDate_String()
         {
             //arrange
-            string referenceDay = "Friday";
+            string referenceDay = "Monday";
             WeekdayFinder newWeekdayFinder = new WeekdayFinder();
             //act
             string result = newWeekdayFinder.GetDayAfterReferenceDate();
@@ -38,7 +38,7 @@ namespace WeekdayFinderApp
         public void GetDayOneWeekAfterReferenceDate_ReturnDayOneWeekAfterReferenceDate_String()
         {
             //arrange
-            string referenceDay = "Thursday";
+            string referenceDay = "Sunday";
             WeekdayFinder newWeekdayFinder = new WeekdayFinder();
             //act
             string result = newWeekdayFinder.GetDayOneWeekAfterReferenceDate();
@@ -50,7 +50,7 @@ namespace WeekdayFinderApp
         public void GetDayOneMonthAfterReferenceDate_ReturnDayOneMonthAfterReferenceDate_String()
         {
             //arrange
-            string referenceDay = "Thursday";
+            string referenceDay = "Wednesday";
             WeekdayFinder newWeekdayFinder = new WeekdayFinder();
             //act
             string result = newWeekdayFinder.GetDayOneMonthAfterReferenceDate();
@@ -59,13 +59,25 @@ namespace WeekdayFinderApp
         }
 
         [Fact]
-        public void GetDayOneYearAfterReferenceDate_ReturnDayOneMonthAfterReferenceDate_String()
+        public void GetDayOneYearAfterReferenceDate_ReturnDayOneYearAfterReferenceDate_String()
         {
             //arrange
-            string referenceDay = "Friday";
+            string referenceDay = "Monday";
             WeekdayFinder newWeekdayFinder = new WeekdayFinder();
             //act
             string result = newWeekdayFinder.GetDayOneYearAfterReferenceDate();
+            //assert
+            Assert.Equal(referenceDay, result);
+        }
+
+        [Fact]
+        public void GetDaySixMonthsAfterReferenceDate_ReturnDaySixMonthsAfterReferenceDate_String()
+        {
+            //arrange
+            string referenceDay = "Saturday";
+            WeekdayFinder newWeekdayFinder = new WeekdayFinder();
+            //act
+            string result = newWeekdayFinder.GetDaySixMonthsAfterReferenceDate();
             //assert
             Assert.Equal(referenceDay, result);
         }

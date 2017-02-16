@@ -7,8 +7,8 @@ namespace WeekdayFinderApp.Objects
     {
         private static Dictionary<string, int> _referenceDate = new Dictionary<string, int>()
         {
-            { "month", 02 },
-            { "day", 16 },
+            { "month", 01 },
+            { "day", 01 },
             { "year", 17 }
         };
 
@@ -23,11 +23,27 @@ namespace WeekdayFinderApp.Objects
             { 6, "Saturday" }
         };
 
-        private static int _referenceDay = 4;
+        private static Dictionary<int, int> _daysInAMonth = new Dictionary<int, int>()
+        {
+            { 01, 31 },
+            { 02, 28 },
+            { 03, 31 },
+            { 04, 30 },
+            { 05, 31 },
+            { 06, 30 },
+            { 07, 31 },
+            { 08, 31 },
+            { 09, 30 },
+            { 10, 31 },
+            { 11, 30 },
+            { 12, 31 }
+        };
+
+        private static int _referenceDay = 0;
 
         public string GetReferenceDay()
         {
-            return _daysOfTheWeek[4];
+            return _daysOfTheWeek[0];
         }
 
         public string GetReferenceDate()
@@ -40,8 +56,8 @@ namespace WeekdayFinderApp.Objects
             //determine the difference between days
             Dictionary<string, int> tomorrow = new Dictionary<string, int>()
             {
-                { "month", 02 },
-                { "day", 17 },
+                { "month", 01 },
+                { "day", 02 },
                 { "year", 17 }
             };
 
@@ -57,8 +73,8 @@ namespace WeekdayFinderApp.Objects
             //determine the difference between days
             Dictionary<string, int> oneWeek = new Dictionary<string, int>()
             {
-                { "month", 02 },
-                { "day", 23 },
+                { "month", 01 },
+                { "day", 08 },
                 { "year", 17 }
             };
 
@@ -74,14 +90,14 @@ namespace WeekdayFinderApp.Objects
             //determine the difference between days
             Dictionary<string, int> oneMonth = new Dictionary<string, int>()
             {
-                { "month", 03 },
-                { "day", 16 },
+                { "month", 02 },
+                { "day", 01 },
                 { "year", 17 }
             };
 
             //find difference between set date and reference date
             int monthDifference = oneMonth["month"] - _referenceDate["month"];
-            int dayDifference = oneMonth["day"] + (28-_referenceDate["day"]);
+            int dayDifference = oneMonth["day"] + (31-_referenceDate["day"]);
 
             //return that day
             return _daysOfTheWeek[(_referenceDay + dayDifference) % 7];
@@ -93,8 +109,8 @@ namespace WeekdayFinderApp.Objects
             //determine the difference between days
             Dictionary<string, int> oneMonth = new Dictionary<string, int>()
             {
-                { "month", 02 },
-                { "day", 16 },
+                { "month", 01 },
+                { "day", 01 },
                 { "year", 18 }
             };
 
@@ -105,8 +121,26 @@ namespace WeekdayFinderApp.Objects
 
             //return that day
             return _daysOfTheWeek[(_referenceDay + yearDifference) % 7];
-        ;
+        }
 
+        public string GetDaySixMonthsAfterReferenceDate()
+        {
+            //determine the difference between days
+            Dictionary<string, int> sixMonths = new Dictionary<string, int>()
+            {
+                { "month", 07 },
+                { "day", 01 },
+                { "year", 17 }
+            };
+
+            //find difference between set date and reference date
+            int yearDifference = sixMonths["year"] - _referenceDate["year"];
+            int monthDifference = sixMonths["month"] - _referenceDate["month"];
+            int dayDifference = sixMonths["day"] -_referenceDate["day"];
+
+            //return that day
+            // return _daysOfTheWeek[(_referenceDay + yearDifference) % 7];
+            return "blah";
         }
     }
 }
