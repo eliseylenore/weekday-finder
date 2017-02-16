@@ -14,20 +14,20 @@ namespace WeekdayFinderApp.Objects
 
         private static Dictionary<int, string> _daysOfTheWeek = new Dictionary<int, string>()
         {
-            { 1, "Sunday" },
-            { 2, "Monday" },
-            { 3, "Tuesday" },
-            { 4, "Wednesday" },
-            { 5, "Thursday" },
-            { 6, "Friday" },
-            { 7, "Saturday" }
+            { 0, "Sunday" },
+            { 1, "Monday" },
+            { 2, "Tuesday" },
+            { 3, "Wednesday" },
+            { 4, "Thursday" },
+            { 5, "Friday" },
+            { 6, "Saturday" }
         };
 
-        private static int _referenceDay = 5;
+        private static int _referenceDay = 4;
 
         public string GetReferenceDay()
         {
-            return _daysOfTheWeek[5];
+            return _daysOfTheWeek[4];
         }
 
         public string GetReferenceDate()
@@ -64,7 +64,9 @@ namespace WeekdayFinderApp.Objects
 
             //find difference between set date and reference date
             int difference = oneWeek["day"] - _referenceDate["day"];
-            return "blah";
+
+            //return that day
+            return _daysOfTheWeek[(_referenceDay + difference) % 7];
 
         }
     }
