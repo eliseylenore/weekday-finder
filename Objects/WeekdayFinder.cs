@@ -22,5 +22,9 @@ namespace WeekdayFinderApp.Objects
         {
             return _referenceDate;
         }
+        public string GetDayAfterReferenceDate()
+        {
+            return "blah";
+        }
     }
 }

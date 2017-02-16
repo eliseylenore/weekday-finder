@@ -19,5 +19,18 @@ namespace WeekdayFinderApp
             // assert
             Assert.Equal(result, referenceDay);
         }
+
+        // Test to see what day the day after referenceDay will be
+        [Fact]
+        public void GetDayAfterReferenceDate_ReturnDayAfterReferenceDate_String()
+        {
+            //arrange
+            string referenceDay = "Friday";
+            WeekdayFinder newWeekdayFinder = new WeekdayFinder();
+            //act
+            string result = newWeekdayFinder.GetDayAfterReferenceDate();
+            //assert
+            Assert.Equal(result, referenceDay);
+        }
     }
 }
