@@ -69,5 +69,23 @@ namespace WeekdayFinderApp.Objects
             return _daysOfTheWeek[(_referenceDay + difference) % 7];
 
         }
+        public string GetDayOneMonthAfterReferenceDate()
+        {
+            //determine the difference between days
+            Dictionary<string, int> oneMonth = new Dictionary<string, int>()
+            {
+                { "month", 03 },
+                { "day", 16 },
+                { "year", 17 }
+            };
+
+            //find difference between set date and reference date
+            int difference = oneMonth["day"] - _referenceDate["day"];
+
+            //return that day
+            return "blah!";
+            // return _daysOfTheWeek[(_referenceDay + difference) % 7];
+
+        }
     }
 }
