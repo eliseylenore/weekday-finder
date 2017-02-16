@@ -104,8 +104,8 @@ namespace WeekdayFinderApp.Objects
             int dayDifference = oneMonth["day"] -_referenceDate["day"];
 
             //return that day
-            // return _daysOfTheWeek[(_referenceDay + yearDifference) % 7];
-            return "blah";
+            return _daysOfTheWeek[(_referenceDay + yearDifference) % 7];
+        ;
 
         }
     }
