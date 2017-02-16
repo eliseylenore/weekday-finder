@@ -80,11 +80,11 @@ namespace WeekdayFinderApp.Objects
             };
 
             //find difference between set date and reference date
-            int difference = oneMonth["day"] - _referenceDate["day"];
+            int monthDifference = oneMonth["month"] - _referenceDate["month"];
+            int dayDifference = oneMonth["day"] + (28-_referenceDate["day"]);
 
             //return that day
-            return "blah!";
-            // return _daysOfTheWeek[(_referenceDay + difference) % 7];
+            return _daysOfTheWeek[(_referenceDay + dayDifference) % 7];
 
         }
     }

@@ -55,7 +55,7 @@ namespace WeekdayFinderApp
             //act
             string result = newWeekdayFinder.GetDayOneMonthAfterReferenceDate();
             //assert
-            Assert.Equal(result, referenceDay);
+            Assert.Equal(referenceDay, result);
         }
     }
 }
