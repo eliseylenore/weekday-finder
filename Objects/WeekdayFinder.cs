@@ -134,13 +134,15 @@ namespace WeekdayFinderApp.Objects
             };
 
             //find difference between set date and reference date
-            int yearDifference = sixMonths["year"] - _referenceDate["year"];
             int monthDifference = sixMonths["month"] - _referenceDate["month"];
-            int dayDifference = sixMonths["day"] -_referenceDate["day"];
+            int dayDifference = sixMonths["day"] + (_daysInAMonth[_referenceDate["month"]] - _referenceDate["day"]);
+            for (int i = 2; i <= monthDifference ; i++)
+            {
+                dayDifference +=_daysInAMonth[i];
+            }
 
             //return that day
-            // return _daysOfTheWeek[(_referenceDay + yearDifference) % 7];
-            return "blah";
+            return _daysOfTheWeek[(_referenceDay + dayDifference) % 7];
         }
     }
 }
