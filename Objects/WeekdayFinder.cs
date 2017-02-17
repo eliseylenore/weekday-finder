@@ -51,98 +51,36 @@ namespace WeekdayFinderApp.Objects
             return _referenceDate["month"] + "/" + _referenceDate["day"] + "/" + _referenceDate["year"];
         }
 
-        public string GetDayAfterReferenceDate()
+
+        public string FindWeekDay(int month, int day, int year)
         {
             //determine the difference between days
-            Dictionary<string, int> tomorrow = new Dictionary<string, int>()
+            Dictionary<string, int> newDictionary = new Dictionary<string, int>()
             {
-                { "month", 01 },
-                { "day", 02 },
-                { "year", 17 }
-            };
-
-            //find what day comes after Thursday
-            int difference = tomorrow["day"] - _referenceDate["day"];
-
-            //return that day
-            return _daysOfTheWeek[_referenceDay + difference];
-        }
-
-        public string GetDayOneWeekAfterReferenceDate()
-        {
-            //determine the difference between days
-            Dictionary<string, int> oneWeek = new Dictionary<string, int>()
-            {
-                { "month", 01 },
-                { "day", 08 },
-                { "year", 17 }
+                { "month", month },
+                { "day", day },
+                { "year", year }
             };
 
             //find difference between set date and reference date
-            int difference = oneWeek["day"] - _referenceDate["day"];
-
-            //return that day
-            return _daysOfTheWeek[(_referenceDay + difference) % 7];
-
-        }
-        public string GetDayOneMonthAfterReferenceDate()
-        {
-            //determine the difference between days
-            Dictionary<string, int> oneMonth = new Dictionary<string, int>()
+            int yearDifference = newDictionary["year"] - _referenceDate["year"];
+            int monthDifference = newDictionary["month"] - _referenceDate["month"];
+            int dayDifference = 0;
+            if(monthDifference != 0)
             {
-                { "month", 02 },
-                { "day", 01 },
-                { "year", 17 }
-            };
-
-            //find difference between set date and reference date
-            int monthDifference = oneMonth["month"] - _referenceDate["month"];
-            int dayDifference = oneMonth["day"] + (31-_referenceDate["day"]);
-
-            //return that day
-            return _daysOfTheWeek[(_referenceDay + dayDifference) % 7];
-
-        }
-
-        public string GetDayOneYearAfterReferenceDate()
-        {
-            //determine the difference between days
-            Dictionary<string, int> oneMonth = new Dictionary<string, int>()
-            {
-                { "month", 01 },
-                { "day", 01 },
-                { "year", 18 }
-            };
-
-            //find difference between set date and reference date
-            int yearDifference = oneMonth["year"] - _referenceDate["year"];
-            int monthDifference = oneMonth["month"] - _referenceDate["month"];
-            int dayDifference = oneMonth["day"] -_referenceDate["day"];
-
-            //return that day
-            return _daysOfTheWeek[(_referenceDay + yearDifference) % 7];
-        }
-
-        public string GetDaySixMonthsAfterReferenceDate()
-        {
-            //determine the difference between days
-            Dictionary<string, int> sixMonths = new Dictionary<string, int>()
-            {
-                { "month", 07 },
-                { "day", 01 },
-                { "year", 17 }
-            };
-
-            //find difference between set date and reference date
-            int monthDifference = sixMonths["month"] - _referenceDate["month"];
-            int dayDifference = sixMonths["day"] + (_daysInAMonth[_referenceDate["month"]] - _referenceDate["day"]);
-            for (int i = 2; i <= monthDifference ; i++)
-            {
-                dayDifference +=_daysInAMonth[i];
+                dayDifference = newDictionary["day"] + (_daysInAMonth[_referenceDate["month"]] - _referenceDate["day"]);
+                for (int i = 2; i <= monthDifference ; i++)
+                {
+                    dayDifference +=_daysInAMonth[i];
+                }
             }
+            else
+            {
+                dayDifference = newDictionary["day"] - _referenceDate["day"];
 
+            }
             //return that day
-            return _daysOfTheWeek[(_referenceDay + dayDifference) % 7];
+            return _daysOfTheWeek[(_referenceDay + dayDifference + yearDifference) % 7];
         }
     }
 }
